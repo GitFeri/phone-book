@@ -1,14 +1,13 @@
 package phonebook.phonenumber;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import phonebook.person.Person;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -28,4 +27,11 @@ public class PhoneNumber {
     private PhoneNumberType phoneNumberType;
 
     private PhoneNumberAccess phoneNumberAccess;
+
+    public PhoneNumber(Person person, String phoneNumber, PhoneNumberType phoneNumberType, PhoneNumberAccess phoneNumberAccess) {
+        this.person = person;
+        this.phoneNumber = phoneNumber;
+        this.phoneNumberType = phoneNumberType;
+        this.phoneNumberAccess = phoneNumberAccess;
+    }
 }

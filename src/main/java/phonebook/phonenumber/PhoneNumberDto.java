@@ -8,7 +8,7 @@ import phonebook.person.Person;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PhoneNumberDTO {
+public class PhoneNumberDto {
     private Long id;
 
     private Person person;
