@@ -33,7 +33,9 @@ public class PersonService {
 
     @Transactional
     public PersonDto updatePerson(Long id, UpdatePersonCommand command) {
-        Person person = personRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Person not found with id: " + id));
+        Person person = personRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("Person not found with id: " + id));
+
         person.setName(command.getName());
         return modelMapper.map(person,PersonDto.class);
     }

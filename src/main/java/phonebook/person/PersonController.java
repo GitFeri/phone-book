@@ -22,7 +22,7 @@ public class PersonController {
         return personService.createPerson(command);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public PersonDto getPersonById(@PathVariable("id") Long id) {
         return personService.getPersonById(id);
     }
