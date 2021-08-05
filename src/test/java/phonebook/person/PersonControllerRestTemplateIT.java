@@ -26,7 +26,6 @@ public class PersonControllerRestTemplateIT {
     @Autowired
     TestRestTemplate template;
 
-    //    private PersonDto personDto;
     private Long id;
 
     @BeforeEach
