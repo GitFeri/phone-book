@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/phonenumber")
+@RequestMapping("/api/phonebook/phonenumber")
 @AllArgsConstructor
 public class PhoneNumberController {
 

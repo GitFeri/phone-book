@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/phonebook")
+@RequestMapping("/api/phonebook/people")
 @AllArgsConstructor
 public class PersonController {
 
