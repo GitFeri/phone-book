@@ -1,0 +1,8 @@
+### (list all people)
+GET http://localhost:8080/api/phonebook
+Accept: application/json
+
+### (list a person by id)
+GET http://localhost:8080/api/phonebook/6
+Accept: application/json
+

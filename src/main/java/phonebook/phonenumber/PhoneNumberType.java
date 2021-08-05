@@ -1,4 +1,4 @@
-package phonebook;
+package phonebook.phonenumber;
 
 public enum PhoneNumberType {
     MOBILE,
