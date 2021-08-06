@@ -3,6 +3,7 @@ package phonebook.person;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,7 +19,7 @@ public class PersonController {
     }
 
     @PostMapping()
-    public PersonDto createPerson(@RequestBody CreatePersonCommand command) {
+    public PersonDto createPerson(@Valid @RequestBody CreatePersonCommand command) {
         return personService.createPerson(command);
     }
 
@@ -29,7 +30,7 @@ public class PersonController {
 
 
     @PutMapping("/{id}")
-    public PersonDto updatePerson(@PathVariable Long id, @RequestBody UpdatePersonCommand command) {
+    public PersonDto updatePerson(@PathVariable Long id, @Valid @RequestBody UpdatePersonCommand command) {
         return personService.updatePerson(id, command);
     }
 

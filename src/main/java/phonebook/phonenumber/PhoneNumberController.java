@@ -3,6 +3,8 @@ package phonebook.phonenumber;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/phonebook/phonenumber")
 @AllArgsConstructor
@@ -16,12 +18,12 @@ public class PhoneNumberController {
     }
 
     @PostMapping
-    public PhoneNumberDto createPhoneNumberAndAddToPerson(@RequestBody CreatePhoneNumberCommand command) {
+    public PhoneNumberDto createPhoneNumberAndAddToPerson(@Valid @RequestBody CreatePhoneNumberCommand command) {
         return phoneNumberService.createPhoneNumber(command);
     }
 
     @PutMapping("/{id}")
-    public PhoneNumberDto updatePhoneNumber(@PathVariable Long id, @RequestBody UpdatePhoneNumberCommand command) {
+    public PhoneNumberDto updatePhoneNumber(@PathVariable Long id,@Valid @RequestBody UpdatePhoneNumberCommand command) {
         return phoneNumberService.updatePhoneNumber(id, command);
     }
 

@@ -24,8 +24,10 @@ public class PhoneNumber {
 
     private String phoneNumber;
 
+    @Enumerated(value = EnumType.STRING)
     private PhoneNumberType phoneNumberType;
 
+    @Enumerated(value = EnumType.STRING)
     private PhoneNumberAccess phoneNumberAccess;
 
     public PhoneNumber(Person person, String phoneNumber, PhoneNumberType phoneNumberType, PhoneNumberAccess phoneNumberAccess) {
