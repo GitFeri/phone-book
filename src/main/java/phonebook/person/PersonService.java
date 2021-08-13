@@ -2,6 +2,7 @@ package phonebook.person;
 
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,8 +16,11 @@ public class PersonService {
     private PersonRepository personRepository;
     private ModelMapper modelMapper;
 
-    public List<Person> getPeople(){
-        return personRepository.findAll();
+    public List<PersonDto> getPeople(Optional<String> partOfName) {
+        List<Person> people = personRepository.findPeopleByNameContains(partOfName.orElse(""));
+        java.lang.reflect.Type targetListType = new TypeToken<List<PersonDto>>() {
+        }.getType();
+        return modelMapper.map(people, targetListType);
     }
 
     @Transactional
@@ -27,17 +31,17 @@ public class PersonService {
     }
 
     public PersonDto getPersonById(Long id) {
-        Person person = personRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Person not found with id: " + id));
-        return modelMapper.map(person,PersonDto.class);
+        Person person = personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
+        return modelMapper.map(person, PersonDto.class);
     }
 
     @Transactional
     public PersonDto updatePerson(Long id, UpdatePersonCommand command) {
         Person person = personRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("Person not found with id: " + id));
+                .orElseThrow(() -> new IllegalArgumentException("Person not found with id: " + id));
 
         person.setName(command.getName());
-        return modelMapper.map(person,PersonDto.class);
+        return modelMapper.map(person, PersonDto.class);
     }
 
     public void deletePersonById(Long id) {
@@ -47,4 +51,5 @@ public class PersonService {
     public void deleteAllPeople() {
         personRepository.deleteAll();
     }
+
 }

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/phonebook/people")
@@ -14,13 +15,8 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping
-    public List<Person> getPeople() {
-        return personService.getPeople();
-    }
-
-    @PostMapping()
-    public PersonDto createPerson(@Valid @RequestBody CreatePersonCommand command) {
-        return personService.createPerson(command);
+    public List<PersonDto> getPeople(@RequestParam Optional<String> partOfName) {
+        return personService.getPeople(partOfName);
     }
 
     @GetMapping("/{id}")
@@ -28,6 +24,10 @@ public class PersonController {
         return personService.getPersonById(id);
     }
 
+    @PostMapping()
+    public PersonDto createPerson(@Valid @RequestBody CreatePersonCommand command) {
+        return personService.createPerson(command);
+    }
 
     @PutMapping("/{id}")
     public PersonDto updatePerson(@PathVariable Long id, @Valid @RequestBody UpdatePersonCommand command) {

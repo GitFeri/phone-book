@@ -29,5 +29,6 @@ public class Person {
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "person")
+    @JsonBackReference
     private Set<PhoneNumber> phoneNumbers;
 }

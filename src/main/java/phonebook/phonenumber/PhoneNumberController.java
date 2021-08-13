@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/phonebook/phonenumber")
@@ -11,6 +13,11 @@ import javax.validation.Valid;
 public class PhoneNumberController {
 
     private PhoneNumberService phoneNumberService;
+
+    @GetMapping
+    private List<PhoneNumberDto> getPhoneNumbers(@RequestParam Optional<String> partOfPhoneNumber) {
+        return phoneNumberService.getPhoneNumbers(partOfPhoneNumber);
+    }
 
     @GetMapping("/{id}")
     public PhoneNumberDto getPhoneNumberById(@PathVariable Long id) {
