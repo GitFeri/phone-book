@@ -13,7 +13,6 @@ import org.zalando.problem.Status;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,13 +34,13 @@ public class PersonControllerRestIT {
     public void setUp() {
         PersonDto personDto =
                 template.postForObject(PEOPLE_URL,
-                        new CreatePersonCommand("John Doe", Set.of()),
+                        new CreatePersonCommand("John Doe"),
                         PersonDto.class);
 
         personIdForTest = personDto.getId();
 
         template.postForObject(PEOPLE_URL,
-                new CreatePersonCommand("Jane Doe", Set.of()),
+                new CreatePersonCommand("Jane Doe"),
                 PersonDto.class);
     }
 
@@ -64,7 +63,7 @@ public class PersonControllerRestIT {
     @Test
     public void testGetPeopleByPartOfName() {
         template.postForObject(PEOPLE_URL,
-                new CreatePersonCommand("Jane Roe", Set.of()),
+                new CreatePersonCommand("Jane Roe"),
                 PersonDto.class);
 
         List<PersonDto> personDtos =

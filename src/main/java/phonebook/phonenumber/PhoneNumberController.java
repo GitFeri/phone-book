@@ -1,5 +1,6 @@
 package phonebook.phonenumber;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/phonebook/phonenumber")
+@Tag(name = "Operation on phone number.", description = "Performing CRUD operations on the phoneNumber class.")
 @AllArgsConstructor
 public class PhoneNumberController {
 
