@@ -1,14 +1,16 @@
 package phonebook.phonenumber;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.*;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
 import phonebook.person.Person;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "phone_numbers")

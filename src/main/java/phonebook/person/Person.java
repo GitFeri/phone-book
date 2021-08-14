@@ -1,7 +1,6 @@
 package phonebook.person;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,4 +30,10 @@ public class Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "person")
     @JsonBackReference
     private Set<PhoneNumber> phoneNumbers;
-}
+
+    public void addPhoneNumber(PhoneNumber phoneNumber) {
+        phoneNumbers.add(phoneNumber);
+        phoneNumber.setPerson(this);
+    }
+
+ }

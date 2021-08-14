@@ -16,13 +16,6 @@ public class PersonService {
     private PersonRepository personRepository;
     private ModelMapper modelMapper;
 
-    public List<PersonDto> getPeople(Optional<String> partOfName) {
-        List<Person> people = personRepository.findPeopleByNameContains(partOfName.orElse(""));
-        java.lang.reflect.Type targetListType = new TypeToken<List<PersonDto>>() {
-        }.getType();
-        return modelMapper.map(people, targetListType);
-    }
-
     @Transactional
     public PersonDto createPerson(CreatePersonCommand command) {
         Person person = new Person(command.getName());
@@ -30,16 +23,21 @@ public class PersonService {
         return modelMapper.map(person, PersonDto.class);
     }
 
+    public List<PersonDto> getPeople(Optional<String> partOfName) {
+        List<Person> people = personRepository.findPeopleByNameContains(partOfName.orElse(""));
+        java.lang.reflect.Type targetListType = new TypeToken<List<PersonDto>>() {
+        }.getType();
+        return modelMapper.map(people, targetListType);
+    }
+
     public PersonDto getPersonById(Long id) {
-        Person person = personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
+        Person person = findPersonById(id);
         return modelMapper.map(person, PersonDto.class);
     }
 
     @Transactional
     public PersonDto updatePerson(Long id, UpdatePersonCommand command) {
-        Person person = personRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Person not found with id: " + id));
-
+        Person person = findPersonById(id);
         person.setName(command.getName());
         return modelMapper.map(person, PersonDto.class);
     }
@@ -52,4 +50,7 @@ public class PersonService {
         personRepository.deleteAll();
     }
 
+    private Person findPersonById(Long id) {
+        return personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
+    }
 }

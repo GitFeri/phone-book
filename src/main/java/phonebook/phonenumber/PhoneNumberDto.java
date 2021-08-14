@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import phonebook.person.Person;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class PhoneNumberDto {
     private Long id;
