@@ -31,6 +31,7 @@ public class PhoneNumberControllerRestIT {
     private static final String PHONE_NUMBER_2 = "+2222222222";
     private static final String PHONE_NUMBER_3 = "+3633333333";
     private static final String PHONE_NUMBER_4 = "+3644444444";
+    private static final String PHONE_NUMBER_5 = "06364444444";
 
     @Autowired
     private TestRestTemplate template;
@@ -82,6 +83,20 @@ public class PhoneNumberControllerRestIT {
 
         assertEquals(PHONE_NUMBER_4, phoneNumberDto.getPhoneNumber());
         assertEquals("John Doe", phoneNumberDto.getPerson().getName());
+    }
+
+    @Test
+    public void testCreatePhoneNumberWithWrongFormat() {
+        Problem result =
+                template.postForObject(PHONE_NUMBER_URL,
+                        new CreatePhoneNumberCommand(
+                                personIdForTest,
+                                PHONE_NUMBER_5,
+                                PhoneNumberType.HOME,
+                                PhoneNumberAccess.SECRET),
+                        Problem.class);
+
+        assertEquals(Status.BAD_REQUEST, result.getStatus());
     }
 
     @Test

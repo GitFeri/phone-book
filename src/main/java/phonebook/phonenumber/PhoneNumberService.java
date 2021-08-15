@@ -67,6 +67,7 @@ public class PhoneNumberService {
     }
 
     public void deletePhoneNumberById(Long id) {
+        findPhoneNumberById(id);
         phoneNumberRepository.deleteById(id);
     }
 
