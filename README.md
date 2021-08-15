@@ -31,17 +31,22 @@ a Http kérések működését.
 
 Személyekkel történő műveletek:
 
-GET     /api/phonebook/people/{id}  Egy személy lekérdezése
-PUT     /api/phonebook/people/{id}  Egy személy módosítása
-DELETE  /api/phonebook/people/{id}  Egy személy törlése
-GET     /api/phonebook/people       Az összes személy lekérdezése
-POST    /api/phonebook/people       Egy személy felvétele
-DELETE  /api/phonebook/people       Az összes személy törlése
+| HTTP metódus | Végpont                            | Leírás                       |
+| ------------ | ---------------------------------- | ---------------------------- |
+| GET          | /api/phonebook/people/{id}         | Egy személy lekérdezése      |                          
+| PUT          | /api/phonebook/people/{id}         | Egy személy módosítása       | 
+| DELETE       | /api/phonebook/people/{id}         | Egy személy törlése          | 
+| GET          | /api/phonebook/people              | Az összes személy lekérdezése| 
+| POST         | /api/phonebook/people              | Egy személy felvétele        | 
+| DELETE       | /api/phonebook/people              | Az összes személy törlése   |  
+
 
 Telefonszámokkal történő műveletek:
 
-GET     /api/phonebook/phonenumber/{id}  Telefonszám lekérdezése
-PUT     /api/phonebook/phonenumber/{id}  Telefonszám módosítása
-DELETE  /api/phonebook/phonenumber/{id}  Telefonszám törlése
-POST    /api/phonebook/phonenumber       Telefonszám létrehozása
-
+| HTTP metódus | Végpont                            | Leírás                       |
+| ------------ | ---------------------------------- | ---------------------------- |
+| GET          | /api/phonebook/phonenumber/{id}    | Telefonszám lekérdezése      |
+| PUT          | /api/phonebook/phonenumber/{id}    | Telefonszám módosítása       |
+| DELETE       | /api/phonebook/phonenumber/{id}    | Telefonszám törlése          |
+| GET          | /api/phonebook/phonenumber         | Összes telefonszám lekérése  |
+| POST         | /api/phonebook/phonenumber         | Telefonszám létrehozása      |
