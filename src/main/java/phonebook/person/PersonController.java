@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/phonebook/people")
+@RequestMapping("/api/people")
 @Tag(name = "Operation on people.", description = "Performing CRUD operations on the person class.")
 @AllArgsConstructor
 public class PersonController {

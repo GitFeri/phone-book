@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/phonebook/phonenumber")
+@RequestMapping("/api/phonenumbers")
 @Tag(name = "Operation on phone number.", description = "Performing CRUD operations on the phoneNumber class.")
 @AllArgsConstructor
 public class PhoneNumberController {

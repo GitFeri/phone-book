@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Sql(statements = "delete from people")
 
 public class PersonControllerRestIT {
-    private static final String PEOPLE_URL = "/api/phonebook/people";
+    private static final String PEOPLE_URL = "/api/people";
 
     @Autowired
     private TestRestTemplate template;

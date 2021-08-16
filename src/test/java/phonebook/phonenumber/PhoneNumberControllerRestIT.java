@@ -24,8 +24,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Sql(statements = "delete from people")
 
 public class PhoneNumberControllerRestIT {
-    private static final String PEOPLE_URL = "/api/phonebook/people";
-    private static final String PHONE_NUMBER_URL = "/api/phonebook/phonenumber";
+    private static final String PEOPLE_URL = "/api/people";
+    private static final String PHONE_NUMBER_URL = "/api/phonenumbers";
 
     private static final String PHONE_NUMBER_1 = "+3611111111";
     private static final String PHONE_NUMBER_2 = "+2222222222";
